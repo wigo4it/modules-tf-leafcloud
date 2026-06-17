@@ -1,0 +1,25 @@
+# Local .terraform directories and files
+**/.terraform/*
+**/planfile*
+tfplan
+
+# no lock.hcl file for the module
+/modules/default/.terraform.lock.hcl
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+
+*.env
+
+.idea
+
+# Test results
+scripts/integration-test/test-results/
+
+# temp files
+*.tmp
+*.bak

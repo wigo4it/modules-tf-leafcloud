@@ -1,0 +1,17 @@
+allowed_types = [
+    "chore",     # Maintenance tasks that don't modify src or test files
+    "ci",        # Changes to CI/CD configuration files and scripts
+    "docs",      # Documentation only changes
+    "feat",      # New features or resources added to the module
+    "fix",       # Bug fixes in module configuration or logic
+    "refactor",  # Code restructuring without changing functionality
+    "revert",    # Reverts a previous commit
+    "style",     # Formatting changes (spacing, alignment, etc.)
+    "test",      # Adding or updating tests
+    "breaking"   # Changes that can break backwards compatibility
+]
+line_length = 100
+merge_commit = true
+style = "conventional"
+subject_capitalized = false
+subject_length = 96
