@@ -12,11 +12,3 @@ terraform {
     }
   }
 }
-
-provider "azurerm" {
-  features {}
-}
-
-provider "openstack" {
-  alias = "leafcloud"
-}

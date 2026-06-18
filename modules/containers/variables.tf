@@ -1,7 +1,3 @@
-###############################################
-# Leafcloud Object Store Container Variables
-###############################################
-
 variable "containers" {
   type        = list(string)
   description = "(Required) List of containers to create in the Leafcloud Object Store."

@@ -1,7 +1,3 @@
-###############################################
-# Leafcloud EC2 Credential Variables
-###############################################
-
 variable "keyvault_name" {
   type        = string
   description = "(Required) The name of the Key Vault where credentials will be stored."

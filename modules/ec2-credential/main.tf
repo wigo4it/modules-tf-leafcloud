@@ -1,6 +1,3 @@
-#############################################
-# Leafcloud EC2 Credential Module
-#############################################
 # This module creates EC2 Credential to access S3 compatible endpoints (e.g. Object Store)
 
 # Get the Key Vault reference
@@ -9,15 +6,10 @@ data "azurerm_key_vault" "kv" {
   resource_group_name = var.keyvault_resource_group
 }
 
-#############################################
 # Create EC2 Credential
-#############################################
 resource "openstack_identity_ec2_credential_v3" "ec2_key" {} # provider arguments are used
 
-#############################################
-# Store credentials in Azure Key Vault
-#############################################
-# Store EC2 credential access key
+# Store EC2 credential access key in Azure Key Vault
 resource "azurerm_key_vault_secret" "ec2_access_key" {
   name            = var.ec2_credential_access_key_secret_name
   value           = openstack_identity_ec2_credential_v3.ec2_key.access
@@ -25,7 +17,7 @@ resource "azurerm_key_vault_secret" "ec2_access_key" {
   expiration_date = timeadd(timestamp(), "1440h") # 60 days
 }
 
-# Store EC2 credential secret
+# Store EC2 credential secret in Azure Key Vault
 resource "azurerm_key_vault_secret" "ec2_secret" {
   name            = var.ec2_credential_secret_secret_name
   value           = openstack_identity_ec2_credential_v3.ec2_key.secret
