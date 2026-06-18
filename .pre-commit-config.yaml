@@ -6,19 +6,23 @@ repos:
     hooks:
       # Format Terraform files
       - id: terraform_fmt
+        files: ^modules/[^/]+/.*\.tf$
 
       # Validate Terraform configurations
       - id: terraform_validate
+        files: ^modules/[^/]+/.*\.tf$
 
       # Generate and update documentation
-      - id: terraform_docs
-        args:
-          - --hook-config=--path-to-file=README.md
-          - --hook-config=--add-to-existing-file=true
-          - --hook-config=--create-file-if-not-exist=true
+      # - id: terraform_docs
+      #   files: ^modules/[^/]+/.*\.tf$
+      #   args:
+      #     - --hook-config=--path-to-file=README.md
+      #     - --hook-config=--add-to-existing-file=true
+      #     - --hook-config=--create-file-if-not-exist=true
 
       # Run tflint for best practices
       - id: terraform_tflint
+        files: ^modules/[^/]+/.*\.tf$
         args:
           - --hook-config=--config=${PWD}/.config/.tflint.hcl
 

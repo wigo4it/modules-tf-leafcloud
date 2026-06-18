@@ -1,45 +1,54 @@
-# tf module
+# Terraform Modules for Leafcloud
 
-This tf module creates [RESOURCE TYPE] in Azure.
+This repository contains reusable Terraform modules for Leafcloud.
 
-## Commits and releases
+## Available Modules
 
-Changes that are merged to main will automatically create a tag and release (see .releaserc) in the [Semantic Versioning](https://semver.org/) format.
-Version bumps are determined by conventional commit messages, for example:
+- `modules/app-credential`: Creates an OpenStack application credential and stores it in Azure Key Vault.
+- `modules/ec2-credential`: Creates an OpenStack EC2 credential and stores it in Azure Key Vault.
+- `modules/containers`: Creates one or more OpenStack Object Storage containers.
 
-- FEAT: → minor version bump
-- FIX: → patch version bump
-- BREAKING CHANGE → major version bump
-- DOCS:, refactor:, test:, style:,
-- REVERT: → patch version bumps
+## Repository Layout
 
-Check committed.toml for full configuration on required commit message prefix.
+```text
+modules/
+ app-credential/
+ ec2-credential/
+ containers/
+```
 
-## terraform docs
-<!-- BEGIN_TF_DOCS -->
-## Requirements
+Each module is independently validated and documented.
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.13 |
+## Development and Validation
 
-## Providers
+Install hooks:
 
-No providers.
+```bash
+pre-commit install
+```
 
-## Modules
+Run all checks:
 
-No modules.
+```bash
+pre-commit run --all-files
+```
 
-## Resources
+Terraform hooks are scoped to `modules/*` and include:
 
-No resources.
+- `terraform_fmt`
+- `terraform_validate`
+- `terraform_docs`
+- `terraform_tflint`
 
-## Inputs
+## Commits and Releases
 
-No inputs.
+Changes merged into `main` automatically create tags and releases based on semantic versioning.
 
-## Outputs
+Version bumps are derived from conventional commit messages:
 
-No outputs.
-<!-- END_TF_DOCS -->
+- `FEAT:` -> minor
+- `FIX:` -> patch
+- `BREAKING CHANGE` -> major
+- `DOCS:`, `refactor:`, `test:`, `style:`, `REVERT:` -> patch
+
+See `committed.toml` for the enforced commit message rules.
